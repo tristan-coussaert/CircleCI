@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout # check out the code in the project directory
       - restore_cache:
@@ -15,3 +18,4 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lcok" }}
           paths:
             - ./node_modules
+
