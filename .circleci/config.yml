@@ -21,7 +21,6 @@ jobs:
           key: yarn-v1-packages-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-  
   lint1:
     docker:
       - image: 'circleci/node:12'
@@ -34,7 +33,6 @@ jobs:
           key: yarn-v1-packages-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-
   test1:
     docker:
       - image: 'circleci/node:12'
@@ -47,8 +45,6 @@ jobs:
           key: yarn-v1-packages-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-
-
   database1:
     docker:
       - image: 'circleci/node:12'
