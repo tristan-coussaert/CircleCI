@@ -7,7 +7,7 @@ workflows:
         requires: yarn
       - test:
         requires: yarn
-      - database
+  
 jobs:
   yarn:
     docker:
