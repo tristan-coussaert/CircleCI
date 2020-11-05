@@ -3,7 +3,7 @@ jobs:
   build:
     database1:
       docker:
-        - image: 'circleci/node12'
+        - image: 'circleci/node:12'
           environnement:
             DATABASE_URL: postgres://psqluer:psqlpassword@localhost:5432/psdb
             JWT_SECRET: some string yo want
