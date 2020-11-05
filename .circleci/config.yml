@@ -1,31 +1,31 @@
 version: 2.1
 jobs:
   build:
-  database1:
-    docker:
-      - image: 'circleci/node12'
-        environnement:
-          DATABASE_URL: postgres://psqluer:psqlpassword@localhost:5432/psdb
-          JWT_SECRET: some string yo want
-          API_PORT: 3000
-          API_HOST: localhost
-          API_PROTOCOL: http
-      - image: 'circle1/postgres:9.6.2-alpine'
-        environnement:
-          POSTGRES_USER: psqluer
-          POSTGRES_PASSWORD: psqlpassword
-          POSTGRES_DB: psdb
+    database1:
+      docker:
+        - image: 'circleci/node12'
+          environnement:
+            DATABASE_URL: postgres://psqluer:psqlpassword@localhost:5432/psdb
+            JWT_SECRET: some string yo want
+            API_PORT: 3000
+            API_HOST: localhost
+            API_PROTOCOL: http
+        - image: 'circle1/postgres:9.6.2-alpine'
+          environnement:
+            POSTGRES_USER: psqluer
+            POSTGRES_PASSWORD: psqlpassword
+            POSTGRES_DB: psdb
     
-    steps:
-      - checkout
-      - restore_cache:
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-      - run: yarn test:e2e
-      - run: yarn global add node-gyp && yarn install
-      - run: yarn lint
-      - run: yarn format:check
-      - run: yarn test:ci
-      - save_cache:
-          key: yarn-packages-{{ checksum "yarn.lcok" }}
-          paths:
-            - ./node_modules
+      steps:
+        - checkout
+        - restore_cache:
+            key: yarn-packages-{{ checksum "yarn.lock" }}
+        - run: yarn test:e2e
+        - run: yarn global add node-gyp && yarn install
+        - run: yarn lint
+        - run: yarn format:check
+        - run: yarn test:ci
+        - save_cache:
+            key: yarn-packages-{{ checksum "yarn.lcok" }}
+            paths:
+              - ./node_modules
