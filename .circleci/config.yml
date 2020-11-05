@@ -23,6 +23,10 @@ jobs:
       - checkout
       - restore_cache:
           key: yarn-packages-{{ checksum "yarn.lock" }}
+      - run: yarn global add node-gyp && yarn install
+      - run: yarn lint
+      - run: yarn format:check
+      - run: yarn test:ci
       - run: yarn test:e2e
       - save_cache:
           key: yarn-packages-{{ checksum "yarn.lcok" }}
