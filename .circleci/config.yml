@@ -6,7 +6,7 @@ workflows:
 jobs:
   database1:
     docker:
-      - image: 'cimg/node:12'
+      - image: 'circleci/node:12'
         environment:
           DATABASE_URL: 'postgres://psqluer:psqlpassword@localhost:5432/psdb'
           JWT_SECRET: some string yo want
