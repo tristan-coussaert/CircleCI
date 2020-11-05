@@ -1,6 +1,7 @@
 version: 2.1
 jobs:
   build:
+  database1:
     docker:
       - image: 'circleci/node12'
         environnement:
@@ -14,6 +15,7 @@ jobs:
           POSTGRES_USER: psqluer
           POSTGRES_PASSWORD: psqlpassword
           POSTGRES_DB: psdb
+    
     steps:
       - checkout
       - restore_cache:
@@ -27,4 +29,3 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lcok" }}
           paths:
             - ./node_modules
-
