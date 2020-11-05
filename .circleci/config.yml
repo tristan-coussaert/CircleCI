@@ -1,4 +1,8 @@
 version: 2.1
+workflows:
+  workflow1:
+    jobs:
+      - database1
 jobs:
   database1:
     docker:
