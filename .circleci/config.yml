@@ -2,14 +2,14 @@ version: 2.1
 workflows:
   workflow1:
     jobs:
-      - yarn1
-      - lint1:
-        requires: yarn1
-      - test1:
-        requires: yarn1
-      - database1
+      - yarn
+      - lint:
+        requires: yarn
+      - test:
+        requires: yarn
+      - database
 jobs:
-  yarn1:
+  yarn:
     docker:
       - image: 'circlec1/node:12'
     steps:
@@ -21,7 +21,7 @@ jobs:
           key: yarn-v1-packages-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-  lint1:
+  lint:
     docker:
       - image: 'circleci/node:12'
     steps:
@@ -33,7 +33,7 @@ jobs:
           key: yarn-v1-packages-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-  test1:
+  test:
     docker:
       - image: 'circleci/node:12'
     steps:
@@ -45,7 +45,7 @@ jobs:
           key: yarn-v1-packages-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-  database1:
+  database:
     docker:
       - image: 'circleci/node:12'
         environment:
