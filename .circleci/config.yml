@@ -6,14 +6,14 @@ workflows:
 jobs:
   database1:
     docker:
-      - image: 'circleci/node:12'
+      - image: circleci/node:12
         environment:
           DATABASE_URL: postgres://psqluer:psqlpassword@localhost:5432/psdb
           JWT_SECRET: some string yo want
           API_PORT: 3000
           API_HOST: localhost
           API_PROTOCOL: http
-      - image: 'circle1/postgres:9.6.2-alpine'
+      - image: circleci/postgres
         environment:
           POSTGRES_USER: psqluer
           POSTGRES_PASSWORD: psqlpassword
