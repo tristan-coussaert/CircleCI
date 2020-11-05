@@ -1,7 +1,6 @@
 version: 2.1
 jobs:
-  build:
-    database1:
+  database1:
       docker:
         - image: 'circleci/node:12'
           environment:
